@@ -1,0 +1,74 @@
+import telegram.ext
+
+
+with open('toxen.txt','r')as f: #bot token file
+    TOKEN=f.read()
+
+def start(update,context):
+    update.message.reply_text("""Hello!Welcome 
+
+
+        The following commands are available:
+    
+
+    /start->Welcome Message
+    /help->This Message
+    /python->Information About NeuralNine Content
+    /DBMS->Information About Contact
+    /OS->Information About Contact
+    /IT->Information About Contact""")
+
+
+def help(update,context):
+    update.message.reply_text("""
+    The following commands are available:
+    
+
+    /start->Welcome Message
+    /help->This Message
+    /python->Information About NeuralNine Content
+    /DBMS->Information About Contact
+    """)
+
+def python(update,context):
+    update.message.reply_text("""1. https://www.python.org/about/gettingstarted/
+    2. https://www.w3schools.com/python/
+    3. https://www.codecademy.com/learn/learn-python-3
+    4. https://www.tutorialspoint.com/python/index.htm
+    5. https://www.hackerrank.com/domains/python (practice problems)
+    6. https://www.youtube.com/watch?v=_uQrJ0TkZlc (online video tutorial )
+    7. https://www.programiz.com/python-programming
+    8. https://www.geeksforgeeks.org/python-programming-language/
+    9. https://www.javatpoint.com/python-programs""")
+
+
+def DBMS(update,context):
+    update.message.reply_text("https://mega.nz/folder/pJF0gCZA#YtWSi12NRRttC-ALkSvI8w")
+
+def OS(update,context):
+    update.message.reply_text("https://mega.nz/folder/9A10lKiK#WsMW7gFNqr7F1jwLgZZu8w")
+
+def IT(update,context):
+    update.message.reply_text("https://mega.nz/folder/YB1XzB5J#gjIa9XL_U8seSkBBUbE6lg")
+
+def handle_message(update,context):
+    if update.message.text == 'Hello': 
+        update.message.reply_text(f"You said{update.message.text}")
+
+updater = telegram.ext.Updater(TOKEN,use_context=True)
+disp = updater.dispatcher
+
+
+disp.add_handler(telegram.ext.CommandHandler("start",start))
+disp.add_handler(telegram.ext.CommandHandler("help",help))
+disp.add_handler(telegram.ext.CommandHandler("python",python))
+disp.add_handler(telegram.ext.CommandHandler("DBMS",DBMS))
+disp.add_handler(telegram.ext.CommandHandler("OS",OS))
+disp.add_handler(telegram.ext.CommandHandler("IT",IT))
+
+
+updater.start_polling()
+updater.idle()
+  
+
+                                        
